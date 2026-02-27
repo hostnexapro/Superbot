@@ -1,0 +1,17 @@
+{
+  "name": "moltbot",
+  "version": "1.0.0",
+  "description": "টেলিগ্রাম ও হোয়াটসঅ্যাপের জন্য Claude AI বট (ডাটাবেস ছাড়া)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "telegraf": "^4.15.3",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.23.0"
+  }
+}
