@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: moltbot
+    runtime: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: ADMIN_USER_ID
+        sync: false
+      - key: WEATHER_API_KEY
+        sync: false
+    autoDeploy: true
+    branch: main
+    repo: https://github.com/yourusername/moltbot.git
