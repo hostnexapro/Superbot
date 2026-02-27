@@ -1,0 +1,61 @@
+version: 2.0
+
+model_provider:
+  type: anthropic
+  api_key: ${ANTHROPIC_API_KEY}
+  model: claude-3-5-sonnet-20241022
+  max_tokens: 4096
+  temperature: 0.7
+
+communication:
+  platforms:
+    - type: telegram
+      token: ${TELEGRAM_BOT_TOKEN}
+      admin_ids: 
+        - ${ADMIN_USER_ID}
+      options:
+        polling: true
+        only_first_match: true
+        webhook: false
+
+features:
+  proactive_tasks:
+    enabled: true
+    check_interval: 3600
+    tasks:
+      - type: weather
+        enabled: true
+      - type: reminders
+        enabled: true
+  
+  reminders:
+    enabled: true
+    max_reminders_per_user: 50
+    
+  file_management:
+    enabled: true
+    max_file_size: 10485760
+    
+  weather:
+    enabled: true
+    api_key: ${WEATHER_API_KEY}
+    units: metric
+    
+  ai_chat:
+    enabled: true
+    context_length: 10
+    system_prompt: |
+      You are Moltbot, a helpful AI assistant integrated with Telegram.
+      You can help users with various tasks including reminders, weather,
+      file management, and general conversation.
+
+logging:
+  level: info
+  format: json
+  output:
+    - console
+    - file
+  file_options:
+    filename: logs/moltbot.log
+    max_size: 10485760
+    max_files: 5
